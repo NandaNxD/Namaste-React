@@ -1,11 +1,10 @@
 "use strict"
-import React from "react";
+import React, { lazy, Suspense } from "react";
 import ReactDOM from "react-dom/client"
 import Header  from "./components/Header";
 import Body from "./components/Body";
 import Footer from "./components/Footer";
 import { createBrowserRouter, RouterProvider,Outlet } from "react-router-dom";
-import About from "./components/About";
 import Contact from "./components/Contact";
 import Error from "./components/Error";
 import RestaurantMenu from "./components/RestaurantMenu";
@@ -20,6 +19,9 @@ const AppComponent = () => {
         </div>
     )
 }
+
+
+const About=lazy(()=>{return import('./components/About')})
 
 const appRouter=createBrowserRouter([
     {
@@ -36,7 +38,7 @@ const appRouter=createBrowserRouter([
             },
             {
                 path:'/about',
-                element:<About/>
+                element:<Suspense fallback={<h1>Loading...</h1>}><About/></Suspense>
             },
             {
                 path:'/restaurant/:resId',

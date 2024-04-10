@@ -6,11 +6,11 @@ const Shimmer=()=>{
     }
 
     return (
-        <div className="shimmer-container">
+        <div className="flex flex-wrap gap-4">
             {
                 shimmerCardList.map((value,index)=>{
                     return (
-                        <div className="shimmer-card" key={index} style={{ background: '#f0f0f0' }}>
+                        <div className="w-64 h-72 rounded-lg" key={index} style={{ background: '#f0f0f0' }}>
                         </div>
                     )
                 })

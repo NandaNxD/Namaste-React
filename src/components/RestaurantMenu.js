@@ -2,69 +2,44 @@ import { useEffect, useState } from "react"
 import Shimmer from "./Shimmer";
 import { CDN_URL } from "../utils/constants";
 import {useParams} from 'react-router-dom'
-import MenuItem from "./MenuItem";
+import MenuItem from "./RestaurantCategory";
+import useRestaurantMenuItem from "../utils/useRestaurantMenuItem";
+import RestaurantCategory from "./RestaurantCategory";
 
 const RestaurantMenu = () => {
-    const [resInfo,setResInfo]=useState(null);
+  
 
     const {resId}=useParams();
 
-    const [resMenuItems,setResMenuItems]=useState([]);
+    const resInfo=useRestaurantMenuItem(resId); 
 
-    useEffect(()=>{
-        getRestaurantMenu()
-    },[])
-
-    const getRestaurantMenu=async ()=>{
-        const data=await fetch('https://thingproxy.freeboard.io/fetch/https://www.swiggy.com/dapi/menu/pl?page-type=REGULAR_MENU&complete-menu=true&lat=12.9834&lng=77.7326&restaurantId='+resId+'&catalog_qa=undefined&isMenuUx4=true')
-        const json=await data.json();
-
-        setResInfo(json?.data?.cards[2]?.card?.card?.info);
-
-        let tempArray=[]
-        
-        for(let {card} of json?.data?.cards[4]?.groupedCard?.cardGroupMap?.REGULAR?.cards[2]?.card?.card?.itemCards){
-            let {name,imageId,price,description,ratings,id}=card.info;
-            ratings=ratings?.aggregatedRating?.rating
-           
-            tempArray.push({
-                name:name,
-                imageId:imageId,
-                price:price,
-                ratings:ratings,
-                price:price,
-                description:description,
-                id:id
-            });
-        }
-
-        setResMenuItems(tempArray);
-    }
 
     if(resInfo===null){
        return (<Shimmer/>)
     }
 
-    const {name,cuisines,cloudinaryImageId,avgRating,costForTwoMessage,id}=resInfo || {}
+    const {name,cuisines,cloudinaryImageId,avgRating,costForTwoMessage,id}=resInfo?.cards[2]?.card?.card?.info || {}
 
+    const resMenuCategory=resInfo.cards[4]?.groupedCard?.cardGroupMap?.REGULAR?.cards.filter((card)=>{
+       return card?.card?.card?.['@type']==='type.googleapis.com/swiggy.presentation.food.v2.ItemCategory';
+    }).map((card)=>{
+        return card?.card?.card
+    })
 
     return(
-            <div className="res-menu">
-                <h1>{name}</h1>
-
+            <div className="flex flex-col items-center">
+                <h1 className="text-3xl my-4 font-bold">{name}</h1>
                 
-                <img src={CDN_URL+cloudinaryImageId}></img>
+                <img src={CDN_URL+cloudinaryImageId} className="w-80 rounded-lg"></img>
                
-                <h3>{cuisines.join(', ')} - {costForTwoMessage}</h3>
-                <h3>Ratings: {avgRating}</h3>
+                <h3 className="text-lg">{cuisines.join(', ')} - {costForTwoMessage}</h3>
+                <h3 className="text-xl">Ratings: {avgRating}</h3>
 
-                <h2>Menu</h2>
-
-                <div>
+                <div className="w-7/12">
                     {
-                        resMenuItems.map((menuItem)=>{
+                        resMenuCategory.map((category)=>{
                             return (
-                               <MenuItem props={menuItem} key={menuItem.id} />
+                               <RestaurantCategory props={category} key={category.title} />
                             )
                         })
                     }
