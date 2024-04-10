@@ -28,7 +28,10 @@ const ItemList = ({items}) => {
                             </div>
 
                             <div className="font-bold my-2">
-                                {`₹${item.price/100}`}
+                                ₹{
+                                    item?.price?(item.price/100): (item.defaultPrice/200)
+                                }
+                              
                             </div>
                         </div>
 

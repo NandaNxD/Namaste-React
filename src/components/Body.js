@@ -33,11 +33,11 @@ const Body = () => {
 
         setLoading(false)
 
-        setFilteredRestaurant(json?.data?.cards[3]?.card?.card?.gridElements?.infoWithStyle?.restaurants);
+        setFilteredRestaurant(json?.data?.cards[4]?.card?.card?.gridElements?.infoWithStyle?.restaurants);
 
       //console.log(json?.data?.cards[4]?.card?.card?.gridElements?.infoWithStyle?.restaurants);
 
-        setListOfRestaurents(json?.data?.cards[3]?.card?.card?.gridElements?.infoWithStyle?.restaurants || [])
+        setListOfRestaurents(json?.data?.cards[4]?.card?.card?.gridElements?.infoWithStyle?.restaurants || [])
     }
 
     const onlineStatus=useOnlineStatus();
