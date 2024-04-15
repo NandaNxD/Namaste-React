@@ -6,7 +6,7 @@ const Shimmer=()=>{
     }
 
     return (
-        <div className="flex flex-wrap gap-4">
+        <div className="flex flex-wrap gap-4 justify-center">
             {
                 shimmerCardList.map((value,index)=>{
                     return (
@@ -16,7 +16,6 @@ const Shimmer=()=>{
                 })
             }
         
-            
         </div>
     )
 }

@@ -13,6 +13,8 @@ const RestaurantMenu = () => {
 
     const resInfo=useRestaurantMenuItem(resId); 
 
+    const [showIndex,setShowIndex]=useState(0);
+
 
     if(resInfo===null){
        return (<Shimmer/>)
@@ -30,16 +32,24 @@ const RestaurantMenu = () => {
             <div className="flex flex-col items-center">
                 <h1 className="text-3xl my-4 font-bold">{name}</h1>
                 
-                <img src={CDN_URL+cloudinaryImageId} className="w-80 rounded-lg"></img>
+                <img src={CDN_URL+cloudinaryImageId} className="w-40 rounded-lg"></img>
                
                 <h3 className="text-lg">{cuisines.join(', ')} - {costForTwoMessage}</h3>
                 <h3 className="text-xl">Ratings: {avgRating}</h3>
 
                 <div className="w-7/12">
                     {
-                        resMenuCategory.map((category)=>{
+                        resMenuCategory.map((category,index)=>{
                             return (
-                               <RestaurantCategory props={category} key={category.title} />
+                               <RestaurantCategory props={category} key={category.title} showItems={showIndex===index} setShowIndex={()=>{
+                                    if(index===showIndex){
+                                        setShowIndex(-1)
+                                    }
+                                    else{
+                                        setShowIndex(index)
+                                    }
+                                    
+                                }} />
                             )
                         })
                     }

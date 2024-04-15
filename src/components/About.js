@@ -5,7 +5,7 @@ const About=()=>{
     return (
         <div>
             <h1>About</h1>
-            <User/>
+            {/* <User/> */}
             <UserClass name={'Nandan'}/>
         </div>
     )

@@ -1,4 +1,5 @@
 import React from "react";
+import UserContext from "../utils/UserContext";
 
 class UserClass extends React.Component{
     constructor(props){
@@ -20,7 +21,11 @@ class UserClass extends React.Component{
                    >
                     Add
                 </button>
-                <h2>{this.props.name}</h2>
+                <UserContext.Consumer>
+                    {({loggedInUser})=>{
+                        return <h2>{loggedInUser}</h2>
+                    }}
+                </UserContext.Consumer>
                 <h3>Frontend Developer</h3>
                 <h3>React Developer</h3>
             </div>

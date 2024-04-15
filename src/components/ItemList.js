@@ -1,13 +1,19 @@
+import {useDispatch} from 'react-redux'
 import { CDN_URL } from "../utils/constants";
+import { addItem } from '../utils/cartSlice';
 
 
-const ItemList = ({items}) => {
+const ItemList = ({items,useMapFunction}) => {
+
+    if(useMapFunction)
     items=items.map((card)=>{
         return card?.card?.info;
     })
-    console.log(items);
+
+ const dispatch= useDispatch();
+
   return (
-    <div className="w-full my-2">
+    <div className="w-full my-3">
         {
             items.map((item)=>{
                 return (
@@ -40,17 +46,15 @@ const ItemList = ({items}) => {
                                 item.imageId && (<img src={CDN_URL+item.imageId} className="rounded-lg shadow-lg"></img>)
                             } 
                     
-                            <div className={`bg-green-700 text-white p-2 absolute rounded-md shadow-lg ${item.imageId?'-bottom-2':''} right-16 cursor-pointer transition-all hover:scale-105  active:scale-95`}>
+                            <div className={`bg-green-700 text-white p-2 absolute rounded-md shadow-lg ${item.imageId?'-bottom-2':''} right-16 cursor-pointer transition-all hover:scale-105  active:scale-95`} onClick={()=>{
+                                // Dispatch action
+                                dispatch(addItem(item))
+                            }}>
                                 Add +
                             </div>
 
                         </div>
                                            
-                        
-
-                        
-
-                       
                     </div>
 
                 )
