@@ -57,7 +57,21 @@ const Body = () => {
           
             <div className="flex gap-2 justify-center">
                 <div className="p-2 m-2">
-                    <input type="text" className="border border-solid  border-black p-2 rounded-lg" value={searchText} onChange={(e)=>setSearchText(e.target.value)}></input>
+                    <input type="text" className="border border-solid  border-black p-2 rounded-lg" value={searchText} onChange={(e)=>{
+                         
+                            setSearchText(e.target.value)
+                        }}
+
+                        onKeyDown={(e)=>{
+                            if(e.code==='Enter'){
+                                if(!searchText.length){
+                                    setFilteredRestaurant(listOfRestaurents);
+                                    return;
+                                }
+                                setFilteredRestaurant(listOfRestaurents.filter((res)=>res.info.name.toLowerCase().includes(searchText.toLowerCase())))
+                            }
+                        }}
+                        ></input>
                     <button onClick={()=>{
                         if(!searchText.length){
                             setFilteredRestaurant(listOfRestaurents);
@@ -82,7 +96,10 @@ const Body = () => {
                    <input className="m-2 p-2 bg-white rounded-lg border border-black"
                         value={loggedInUser}
 
-                        onChange={(e)=>{setLoggedInUser(e.target.value)}}
+                        onChange={(e)=>{
+                           
+                            setLoggedInUser(e.target.value)
+                        }}
                          
                     />
                 </div>
