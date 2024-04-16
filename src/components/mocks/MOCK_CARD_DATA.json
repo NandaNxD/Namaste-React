@@ -1,0 +1,61 @@
+{
+    "id": "247196",
+    "name": "Sardarji Londonwaley",
+    "cloudinaryImageId": "nrhoi6hwpucowvqzc3nl",
+    "locality": "Whitefield Main Road",
+    "areaName": "Varthur Hobali",
+    "costForTwo": "₹400 for two",
+    "cuisines": [
+        "Biryani",
+        "Chinese",
+        "Punjabi"
+    ],
+    "avgRating": 3.9,
+    "parentId": "7808",
+    "avgRatingString": "3.9",
+    "totalRatingsString": "1K+",
+    "sla": {
+        "deliveryTime": 50,
+        "lastMileTravel": 3,
+        "serviceability": "SERVICEABLE",
+        "slaString": "45-50 mins",
+        "lastMileTravelString": "3.0 km",
+        "iconType": "ICON_TYPE_EMPTY"
+    },
+    "availability": {
+        "nextCloseTime": "2024-04-17 00:00:00",
+        "opened": true
+    },
+    "badges": {},
+    "isOpen": true,
+    "type": "F",
+    "badgesV2": {
+        "entityBadges": {
+            "imageBased": {},
+            "textBased": {},
+            "textExtendedBadges": {}
+        }
+    },
+    "aggregatedDiscountInfoV3": {
+        "header": "₹125 OFF",
+        "subHeader": "ABOVE ₹249",
+        "discountTag": "FLAT DEAL"
+    },
+    "orderabilityCommunication": {
+        "title": {},
+        "subTitle": {},
+        "message": {},
+        "customIcon": {}
+    },
+    "differentiatedUi": {
+        "displayType": "ADS_UI_DISPLAY_TYPE_ENUM_DEFAULT",
+        "differentiatedUiMediaDetails": {
+            "mediaType": "ADS_MEDIA_ENUM_IMAGE",
+            "lottie": {},
+            "video": {}
+        }
+    },
+    "reviewsSummary": {},
+    "displayType": "RESTAURANT_DISPLAY_TYPE_DEFAULT",
+    "restaurantOfferPresentationInfo": {}
+}

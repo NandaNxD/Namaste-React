@@ -14,7 +14,6 @@ const Header = () => {
 
     const cart=useSelector((store)=>{return store.cart.items});
 
-    console.log(cart)
 
     return (
         <div className="flex justify-between align-middle shadow-sm bg-pink-100 p-2 mb-3">
@@ -31,7 +30,7 @@ const Header = () => {
                     <li><Link to={'/cart'}>Cart ({cart.length})</Link></li>
 
 
-                    {/* <button className="login-btn" onClick={()=>{
+                    <button className="login-btn" onClick={()=>{
                         if(btnName==='login'){
                             setBtnName('logout')
                         }
@@ -40,7 +39,7 @@ const Header = () => {
                         }
                        
                         
-                    }}>{btnName}</button> */}
+                    }}>{btnName}</button>
                     {/* <li>{loggedInUser}</li> */}
                 </ul>
             </div>
