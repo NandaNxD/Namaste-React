@@ -15,8 +15,6 @@ const Body = () => {
 
     const [filteredRestaurant,setFilteredRestaurant]=useState([])
 
-    console.log(listOfRestaurents)
-
     const {loggedInUser,setLoggedInUser}=useContext(UserContext);
 
     useEffect(() => {
@@ -38,9 +36,8 @@ const Body = () => {
 
         setFilteredRestaurant(json?.data?.cards[4]?.card?.card?.gridElements?.infoWithStyle?.restaurants);
 
-      //console.log(json?.data?.cards[4]?.card?.card?.gridElements?.infoWithStyle?.restaurants);
+        setListOfRestaurents(json?.data?.cards[4]?.card?.card?.gridElements?.infoWithStyle?.restaurants || []);
 
-        setListOfRestaurents(json?.data?.cards[4]?.card?.card?.gridElements?.infoWithStyle?.restaurants || [])
     }
 
     const onlineStatus=useOnlineStatus();
@@ -53,7 +50,7 @@ const Body = () => {
 
 
     return loading  ? (<Shimmer/>) : (
-        <div className="body">
+        <div className="body" >
           
             <div className="flex gap-2 justify-center">
                 <div className="p-2 m-2">
@@ -72,7 +69,7 @@ const Body = () => {
                             }
                         }}
                         ></input>
-                    <button onClick={()=>{
+                    <button data-testid="searchButton" onClick={()=>{
                         if(!searchText.length){
                             setFilteredRestaurant(listOfRestaurents);
                             return;
@@ -106,11 +103,11 @@ const Body = () => {
                
             </div>
 
-            <div className="flex flex-wrap justify-center">
+            <div className="flex flex-wrap justify-center ">
                 {
                     filteredRestaurant.map(({ info }) => {
                         return (
-                            <Link to={'/restaurant/'+info.id} key={info.id}>
+                            <Link to={'/restaurant/'+info.id} key={info.id} data-testid='resCard'>
                                 {(info?.veg)?<VegRestaurantCard key={info.id} data={info}/>: <RestaurentCard key={info.id} data={info}/>}
                              </Link>
                         )
