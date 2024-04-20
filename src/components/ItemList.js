@@ -17,7 +17,7 @@ const ItemList = ({items,useMapFunction}) => {
         {
             items.map((item)=>{
                 return (
-                    <div key={item.id} className="flex my-2 border-b-2 border-gray-300 p-3 justify-between">
+                    <div key={item.id} className="flex my-2 border-b-2 border-gray-300 p-3 justify-between" data-testid="item-div">
 
                         <div className="w-8/12">
                             <div className={ 'w-fit rounded-sm border-2  text-sm '+(item?.isVeg?'border-green-700':'border-red-700')}>
@@ -46,7 +46,7 @@ const ItemList = ({items,useMapFunction}) => {
                                 item.imageId && (<img src={CDN_URL+item.imageId} className="rounded-lg shadow-lg"></img>)
                             } 
                     
-                            <div className={`bg-green-700 text-white p-2 absolute rounded-md shadow-lg ${item.imageId?'-bottom-2':''} right-16 cursor-pointer transition-all hover:scale-105  active:scale-95`} onClick={()=>{
+                            <div data-testid="add-btn" className={`bg-green-700 text-white p-2 absolute rounded-md shadow-lg ${item.imageId?'-bottom-2':''} right-16 cursor-pointer transition-all hover:scale-105  active:scale-95`} onClick={()=>{
                                 // Dispatch action
                                 dispatch(addItem(item))
                             }}>

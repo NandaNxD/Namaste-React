@@ -53,7 +53,7 @@ describe('Header Test',()=>{
             </BrowserRouter>
         )
         
-        let loginButton=screen.getByText('login');
+        let loginButton=screen.getByTestId('login-btn');
 
         fireEvent.click(loginButton);
 

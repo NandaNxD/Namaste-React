@@ -28,6 +28,7 @@ const RestaurantMenu = () => {
         return card?.card?.card
     })
 
+
     return(
             <div className="flex flex-col items-center">
                 <h1 className="text-3xl my-4 font-bold">{name}</h1>
@@ -41,7 +42,7 @@ const RestaurantMenu = () => {
                     {
                         resMenuCategory.map((category,index)=>{
                             return (
-                               <RestaurantCategory props={category} key={category.title} showItems={showIndex===index} setShowIndex={()=>{
+                               <RestaurantCategory  props={category} key={category.title} showItems={showIndex===index} setShowIndex={()=>{
                                     if(index===showIndex){
                                         setShowIndex(-1)
                                     }

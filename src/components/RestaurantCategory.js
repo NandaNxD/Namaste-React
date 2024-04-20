@@ -6,9 +6,9 @@ const RestaurantCategory = ({props, showItems,setShowIndex}) => {
   const {title,itemCards}=props;
 
   return (
-    <div className="m-8 p-4 bg-gray-100 rounded-lg flex items-center flex-col shadow-xl">
+    <div className="m-8 p-4 bg-gray-100 rounded-lg flex items-center flex-col shadow-xl" data-testid="res-category">
 
-      <div className="flex justify-between cursor-pointer  w-full" onClick={()=>{
+      <div className="flex justify-between cursor-pointer  w-full"  data-testid="accordian-control-div" onClick={()=>{
         setShowIndex();
       }}>
         <span className="text-xl w-10/12 font-bold">{`${title} (${itemCards.length})`}</span>

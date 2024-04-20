@@ -30,7 +30,7 @@ const Header = () => {
                     <li><Link to={'/cart'}>Cart ({cart.length})</Link></li>
 
 
-                    <button className="login-btn" onClick={()=>{
+                    <button className="login-btn" data-testid="login-btn" onClick={()=>{
                         if(btnName==='login'){
                             setBtnName('logout')
                         }

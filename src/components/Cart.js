@@ -17,7 +17,7 @@ const Cart=()=>{
 
             {
                 cartItems.length?(    
-                    <div className="p-2 m-2 rounded-lg border bg-black text-white hover:scale-105 transition-all active:scale-100" onClick={()=>{
+                    <div className="p-2 m-2 rounded-lg border bg-black text-white hover:scale-105 transition-all active:scale-100" data-testid='clear-cart' onClick={()=>{
                         dispatch(clearCart());
                     }}>Clear Cart</div>
                 ):''
